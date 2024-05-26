@@ -33,9 +33,7 @@ public class PersonDa implements AutoCloseable, CRUD<Person> {
         preparedStatement.setString(4, person.getGender().name());
         preparedStatement.setDate(5, Date.valueOf(person.getBirthDate()));
         preparedStatement.setString(6, person.getCity().name());
-        preparedStatement.setBoolean(7, person.isAlgorithmSkill());
-        preparedStatement.setBoolean(8, person.isJavaSESkill());
-        preparedStatement.setBoolean(9, person.isJavaEESkill());
+
         preparedStatement.execute();
         return person;
     }
@@ -50,9 +48,7 @@ public class PersonDa implements AutoCloseable, CRUD<Person> {
         preparedStatement.setString(3, person.getGender().name());
         preparedStatement.setDate(4, Date.valueOf(person.getBirthDate()));
         preparedStatement.setString(5, person.getCity().name());
-        preparedStatement.setBoolean(6, person.isAlgorithmSkill());
-        preparedStatement.setBoolean(7, person.isJavaSESkill());
-        preparedStatement.setBoolean(8, person.isJavaEESkill());
+
         preparedStatement.setInt(9, person.getId());
         preparedStatement.execute();
         return person;
@@ -84,9 +80,7 @@ public class PersonDa implements AutoCloseable, CRUD<Person> {
                     .gender(Gender.valueOf(resultSet.getString("GENDER")))
                     .birthDate(resultSet.getDate("BIRTH_DATE").toLocalDate())
                     .city(City.valueOf(resultSet.getString("CITY")))
-                    .algorithmSkill(resultSet.getBoolean("ALGO"))
-                    .JavaSESkill(resultSet.getBoolean("SE"))
-                    .JavaEESkill(resultSet.getBoolean("EE"))
+
                     .build();
 
             personList.add(person);
@@ -110,9 +104,7 @@ public class PersonDa implements AutoCloseable, CRUD<Person> {
                     .gender(Gender.valueOf(resultSet.getString("GENDER")))
                     .birthDate(resultSet.getDate("BIRTH_DATE").toLocalDate())
                     .city(City.valueOf(resultSet.getString("CITY")))
-                    .algorithmSkill(resultSet.getBoolean("ALGO"))
-                    .JavaSESkill(resultSet.getBoolean("SE"))
-                    .JavaEESkill(resultSet.getBoolean("EE"))
+
                     .build();
         }
         return person;
@@ -134,9 +126,7 @@ public class PersonDa implements AutoCloseable, CRUD<Person> {
                     .gender(Gender.valueOf(resultSet.getString("GENDER")))
                     .birthDate(resultSet.getDate("BIRTH_DATE").toLocalDate())
                     .city(City.valueOf(resultSet.getString("CITY")))
-                    .algorithmSkill(resultSet.getBoolean("ALGO"))
-                    .JavaSESkill(resultSet.getBoolean("SE"))
-                    .JavaEESkill(resultSet.getBoolean("EE"))
+
                     .build();
 
             personList.add(person);
