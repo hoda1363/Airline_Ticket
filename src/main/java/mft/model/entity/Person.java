@@ -5,8 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import mft.model.entity.enums.City;
-import mft.model.entity.enums.Gender;
 
 import java.time.LocalDate;
 
@@ -19,10 +17,8 @@ public class Person {
     private int id;
     private String name;
     private String family;
-    private Gender gender;
+    private String nationalId;
     private LocalDate birthDate;
-    private City city;
-
     @Override
     public String toString() {
         return new Gson().toJson(this);

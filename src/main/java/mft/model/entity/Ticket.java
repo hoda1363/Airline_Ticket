@@ -5,9 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import mft.model.entity.enums.Airline;
 
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @NoArgsConstructor
 @Getter
@@ -16,11 +18,12 @@ import java.time.LocalDateTime;
 public class Ticket {
     private int id;
     private LocalDateTime dateTime;
-    private String source;
-    private String destination;
-    private int duration;
+    private String source;  //manbae
+    private String destination; //maghsad
+    private LocalTime duration;
     private boolean confirm;
     private Flight flight;
+    private Airline airline;
 
     @Override
     public String toString() {

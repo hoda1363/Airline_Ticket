@@ -12,6 +12,7 @@ import mft.model.entity.enums.Airline;
 @Setter
 @SuperBuilder(toBuilder = true)
 public class Plane {
+    private int id;
     private String name;
     private Airline airline;
     private  String flightNumber;

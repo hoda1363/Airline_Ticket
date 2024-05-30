@@ -2,8 +2,6 @@ package mft.model.da;
 
 import lombok.extern.log4j.Log4j;
 import mft.model.entity.Person;
-import mft.model.entity.enums.City;
-import mft.model.entity.enums.Gender;
 import mft.model.tools.CRUD;
 import mft.model.tools.ConnectionProvider;
 
@@ -25,15 +23,13 @@ public class PersonDa implements AutoCloseable, CRUD<Person> {
         person.setId(ConnectionProvider.getConnectionProvider().getNextId("PERSON_SEQ"));
 
         preparedStatement = connection.prepareStatement(
-                "INSERT INTO PERSON (ID, NAME, FAMILY, GENDER, BIRTH_DATE, CITY, ALGO, SE, EE) VALUES (?,?,?,?,?,?,?,?,?)"
+                "INSERT INTO PERSON (ID, NAME, FAMILY,national_Id,BIRTH_DATE) VALUES (?,?,?,?,?)"
         );
         preparedStatement.setInt(1, person.getId());
         preparedStatement.setString(2, person.getName());
         preparedStatement.setString(3, person.getFamily());
-        preparedStatement.setString(4, person.getGender().name());
+        preparedStatement.setString(4, person.getNationalId());
         preparedStatement.setDate(5, Date.valueOf(person.getBirthDate()));
-        preparedStatement.setString(6, person.getCity().name());
-
         preparedStatement.execute();
         return person;
     }
@@ -41,15 +37,13 @@ public class PersonDa implements AutoCloseable, CRUD<Person> {
     @Override
     public Person edit(Person person) throws Exception {
         preparedStatement = connection.prepareStatement(
-                "UPDATE PERSON SET NAME=?, FAMILY=?, GENDER=?, BIRTH_DATE=?, CITY=?, ALGO=?, SE=?, EE=? WHERE ID=?"
+                "UPDATE PERSON SET NAME=?,FAMILY=?,national_Id=?,BIRTH_DATE=? WHERE ID=?"
         );
-        preparedStatement.setString(1, person.getName());
-        preparedStatement.setString(2, person.getFamily());
-        preparedStatement.setString(3, person.getGender().name());
-        preparedStatement.setDate(4, Date.valueOf(person.getBirthDate()));
-        preparedStatement.setString(5, person.getCity().name());
-
-        preparedStatement.setInt(9, person.getId());
+        preparedStatement.setInt(1, person.getId());
+        preparedStatement.setString(2, person.getName());
+        preparedStatement.setString(3, person.getFamily());
+        preparedStatement.setString(4, person.getNationalId());
+        preparedStatement.setDate(5, Date.valueOf(person.getBirthDate()));
         preparedStatement.execute();
         return person;
     }
@@ -67,20 +61,16 @@ public class PersonDa implements AutoCloseable, CRUD<Person> {
     @Override
     public List<Person> findAll() throws Exception {
         List<Person> personList = new ArrayList<>();
-
         preparedStatement = connection.prepareStatement("SELECT * FROM PERSON ORDER BY ID");
         ResultSet resultSet = preparedStatement.executeQuery();
-
         while (resultSet.next()) {
             Person person = Person
                     .builder()
                     .id(resultSet.getInt("ID"))
                     .name(resultSet.getString("NAME"))
                     .family(resultSet.getString("FAMILY"))
-                    .gender(Gender.valueOf(resultSet.getString("GENDER")))
+                    .family(resultSet.getString("national_Id"))
                     .birthDate(resultSet.getDate("BIRTH_DATE").toLocalDate())
-                    .city(City.valueOf(resultSet.getString("CITY")))
-
                     .build();
 
             personList.add(person);
@@ -101,10 +91,8 @@ public class PersonDa implements AutoCloseable, CRUD<Person> {
                     .id(resultSet.getInt("ID"))
                     .name(resultSet.getString("NAME"))
                     .family(resultSet.getString("FAMILY"))
-                    .gender(Gender.valueOf(resultSet.getString("GENDER")))
+                    .family(resultSet.getString("national_Id"))
                     .birthDate(resultSet.getDate("BIRTH_DATE").toLocalDate())
-                    .city(City.valueOf(resultSet.getString("CITY")))
-
                     .build();
         }
         return person;
@@ -123,12 +111,9 @@ public class PersonDa implements AutoCloseable, CRUD<Person> {
                     .id(resultSet.getInt("ID"))
                     .name(resultSet.getString("NAME"))
                     .family(resultSet.getString("FAMILY"))
-                    .gender(Gender.valueOf(resultSet.getString("GENDER")))
+                    .family(resultSet.getString("national_Id"))
                     .birthDate(resultSet.getDate("BIRTH_DATE").toLocalDate())
-                    .city(City.valueOf(resultSet.getString("CITY")))
-
                     .build();
-
             personList.add(person);
         }
 

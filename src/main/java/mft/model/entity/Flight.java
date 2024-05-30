@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 
 public class Flight {
     private int id;
+    private String name;
     private int flightNumber;
     private String companyName;
     private LocalDateTime startTime;

@@ -1,16 +1,15 @@
 create table person
 (
-    id         number primary key,
-    name       nvarchar2(30),
-    family     nvarchar2(30),
-    gender     varchar2(6),
-    birth_date date,
-    city       varchar2(20)
-);
+    id            number primary key,
+    name          nvarchar2(30),
+    family        nvarchar2(30),
+    national_Id   char(11),
+    birth_date    timestamp);
 create sequence person_seq start with 1 increment by 1;
 
 create table plane
 (
+    ID          number primary key ,
     name         nvarchar2(30),
     Airline      nvarchar2(20),
     flightNumber nvarchar2(20),
@@ -27,24 +26,25 @@ create table flight
 (
     id           number primary key,
     name         nvarchar2(30),
-    flightNumber nvarchar2(6),
-    companyName  nvarchar2(30),
-    startTime    time,
-    endTime      time,
-    plane_id references plane
+    flight_Number nvarchar2(6),
+    company_Name  nvarchar2(30),
+    start_Time    TIMESTAMP,
+    end_Time      TIMESTAMP,
+    plane_id      references plane
 );
 create sequence flight_seq start with 1 increment by 1;
 
 
 create table ticket
 (
-    id number primary key ,
+    id          number primary key ,
     dateTime    timestamp,
     source      varchar2(20),
     destination varchar2(20),
     duration    number,
     confirm     number(1),
-    Flight_id   references flight
+    Flight_id   references flight,
+    Airline     nvarchar2(8)
 );
 create sequence ticket_seq start with 1 increment by 1;
 

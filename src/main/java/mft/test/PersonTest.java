@@ -2,8 +2,6 @@ package mft.test;
 
 import mft.model.bl.PersonBl;
 import mft.model.entity.Person;
-import mft.model.entity.enums.City;
-import mft.model.entity.enums.Gender;
 
 import java.time.LocalDate;
 
@@ -18,8 +16,6 @@ public class PersonTest {
                         .id(4)
                         .name("aaa")
                         .family("bbbb")
-                        .gender(Gender.Female)
-                        .city(City.Tabriz)
                         .birthDate(LocalDate.now())
                         .build()
         ));

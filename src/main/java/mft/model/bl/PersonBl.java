@@ -9,7 +9,7 @@ import mft.model.tools.CRUD;
 
 import java.util.List;
 
-public class PersonBl implements CRUD<Person> {
+public class PersonBl implements CRUD<Person>{
     @Getter
     private static PersonBl personBl = new PersonBl();
 
@@ -19,6 +19,7 @@ public class PersonBl implements CRUD<Person> {
     @Override
     public Person save(Person person) throws Exception {
         try (PersonDa personDa = new PersonDa()) {
+            if(personDa.)
             personDa.save(person);
             return person;
         }
