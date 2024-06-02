@@ -90,6 +90,12 @@ public class TicketDa implements AutoCloseable, CRUD<Ticket> {              //TO
         return ticketList;
     }
 
+    @Override
+    public Ticket findById(int id) throws Exception {
+
+        return null;
+    }
+
     public Ticket findByAirline(Airline airline) throws Exception {
         preparedStatement = connection.prepareStatement("SELECT * FROM TICKET where AIRLINE=?");
         preparedStatement.setString(1, String.valueOf(airline));

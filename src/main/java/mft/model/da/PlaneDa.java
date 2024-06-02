@@ -97,7 +97,8 @@ public class PlaneDa implements AutoCloseable, CRUD<Plane> {
                     .id(resultSet.getInt("id"))
                     .name(resultSet.getString("name"))
                     .airline(Airline.valueOf(resultSet.getString("airline")))
-                    .flightNumber(resultSet.getInt("flightNumber"))
+                    .flightNumber(resultSet.getInt(
+                            "flightNumber"))
                     .aircraftType(resultSet.getString("airCraftType"))
                     .route(resultSet.getString("route"))
                     .capacity(resultSet.getInt("capacity"))

@@ -1,5 +1,6 @@
 package mft.model.bl;
 
+import lombok.Getter;
 import mft.controller.exceptions.NoFlightFoundException;
 import mft.model.da.FlightDa;
 
@@ -9,6 +10,13 @@ import mft.model.tools.CRUD;
 import java.util.List;
 
 public class FlightBl implements CRUD<Flight> {
+
+    @Getter
+    private static FlightBl flightBl = new FlightBl();
+
+    private FlightBl() {
+    }
+
     @Override
     public Flight save(Flight flight) throws Exception {
         try (FlightDa flightDa = new FlightDa()) {

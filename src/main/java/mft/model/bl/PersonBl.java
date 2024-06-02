@@ -1,7 +1,6 @@
 package mft.model.bl;
 
 import lombok.Getter;
-import mft.controller.exceptions.FailedRequiermentException;
 import mft.controller.exceptions.NoPersonFoundException;
 import mft.model.da.PersonDa;
 import mft.model.entity.Person;
