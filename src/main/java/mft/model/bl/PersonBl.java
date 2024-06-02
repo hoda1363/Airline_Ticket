@@ -9,7 +9,8 @@ import mft.model.tools.CRUD;
 
 import java.util.List;
 
-public class PersonBl implements CRUD<Person>{
+public class
+PersonBl implements CRUD<Person>{
     @Getter
     private static PersonBl personBl = new PersonBl();
 

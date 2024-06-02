@@ -1,4 +1,4 @@
-create table person
+create table person_tbl
 (
     id            number primary key,
     name          nvarchar2(30),
@@ -6,6 +6,18 @@ create table person
     national_Id   char(11),
     birth_date    timestamp);
 create sequence person_seq start with 1 increment by 1;
+
+
+create table user_tbl
+(
+    id            number primary key,
+    name          nvarchar2(30) unique ,
+    family        nvarchar2(30),
+    enable number(1)
+create sequence user_seq start with 1 increment by 1;
+
+
+
 
 create table plane
 (
@@ -46,6 +58,9 @@ create table ticket
     Flight_id   references flight,
     Airline     nvarchar2(8)
 );
+
+
+
 create sequence ticket_seq start with 1 increment by 1;
 
 
