@@ -1,16 +1,17 @@
 package mft.model.da;
 
 import mft.model.entity.Flight;
-import mft.model.entity.Person;
 import mft.model.entity.Ticket;
 import mft.model.entity.enums.Airline;
 import mft.model.tools.CRUD;
 import mft.model.tools.ConnectionProvider;
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TicketDa implements AutoCloseable, CRUD<Ticket> {
+public class TicketDa implements AutoCloseable, CRUD<Ticket> {              //TODO
     private final Connection connection;
     private PreparedStatement preparedStatement;
 
@@ -89,10 +90,89 @@ public class TicketDa implements AutoCloseable, CRUD<Ticket> {
         return ticketList;
     }
 
-    @Override
-    public Ticket findById(int id) throws Exception {
-        preparedStatement = connection.prepareStatement("SELECT * FROM TICKET where ID=?");
-        preparedStatement.setInt(1,id);
+    public Ticket findByAirline(Airline airline) throws Exception {
+        preparedStatement = connection.prepareStatement("SELECT * FROM TICKET where AIRLINE=?");
+        preparedStatement.setString(1, String.valueOf(airline));
+        ResultSet resultSet = preparedStatement.executeQuery();
+        Ticket ticket = null;
+        if (resultSet.next()) {
+            ticket = Ticket
+                    .builder()
+                    .id(resultSet.getInt("ID"))
+                    .dateTime(resultSet.getTimestamp("dateTime").toLocalDateTime())
+                    .source(resultSet.getString("sorce"))
+                    .destination(resultSet.getString("destination"))
+                    .duration(resultSet.getTime("duration").toLocalTime())
+                    .confirm(resultSet.getBoolean("confirm"))
+                    .flight(Flight.builder().id(resultSet.getInt("FLIGHT_ID")).build())
+                    .airline(Airline.valueOf(resultSet.getString("airline")))
+                    .build();
+        }
+        return ticket;
+    }
+    public Ticket findByFlightId(int flightId) throws Exception {
+        preparedStatement = connection.prepareStatement("SELECT * FROM TICKET where FLIGHT_ID=?");
+        preparedStatement.setInt(1, flightId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        Ticket ticket = null;
+        if (resultSet.next()) {
+            ticket = Ticket
+                    .builder()
+                    .id(resultSet.getInt("ID"))
+                    .dateTime(resultSet.getTimestamp("dateTime").toLocalDateTime())
+                    .source(resultSet.getString("sorce"))
+                    .destination(resultSet.getString("destination"))
+                    .duration(resultSet.getTime("duration").toLocalTime())
+                    .confirm(resultSet.getBoolean("confirm"))
+                    .flight(Flight.builder().id(resultSet.getInt("FLIGHT_ID")).build())
+                    .airline(Airline.valueOf(resultSet.getString("airline")))
+                    .build();
+        }
+        return ticket;
+    }
+    public Ticket findBySource(String source) throws Exception {
+        preparedStatement = connection.prepareStatement("SELECT * FROM TICKET where source=?");
+        preparedStatement.setString(1, source);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        Ticket ticket = null;
+        if (resultSet.next()) {
+            ticket = Ticket
+                    .builder()
+                    .id(resultSet.getInt("ID"))
+                    .dateTime(resultSet.getTimestamp("dateTime").toLocalDateTime())
+                    .source(resultSet.getString("sorce"))
+                    .destination(resultSet.getString("destination"))
+                    .duration(resultSet.getTime("duration").toLocalTime())
+                    .confirm(resultSet.getBoolean("confirm"))
+                    .flight(Flight.builder().id(resultSet.getInt("FLIGHT_ID")).build())
+                    .airline(Airline.valueOf(resultSet.getString("airline")))
+                    .build();
+        }
+        return ticket;
+    }
+    public Ticket findByDestination(String destination) throws Exception {
+        preparedStatement = connection.prepareStatement("SELECT * FROM TICKET where DESTINATION=?");
+        preparedStatement.setString(1, destination);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        Ticket ticket = null;
+        if (resultSet.next()) {
+            ticket = Ticket
+                    .builder()
+                    .id(resultSet.getInt("ID"))
+                    .dateTime(resultSet.getTimestamp("dateTime").toLocalDateTime())
+                    .source(resultSet.getString("sorce"))
+                    .destination(resultSet.getString("destination"))
+                    .duration(resultSet.getTime("duration").toLocalTime())
+                    .confirm(resultSet.getBoolean("confirm"))
+                    .flight(Flight.builder().id(resultSet.getInt("FLIGHT_ID")).build())
+                    .airline(Airline.valueOf(resultSet.getString("airline")))
+                    .build();
+        }
+        return ticket;
+    }
+    public Ticket findByDateTime(LocalDateTime dateTime) throws Exception {
+        preparedStatement = connection.prepareStatement("SELECT * FROM TICKET where DATETIME=?");
+        preparedStatement.setTimestamp(1, Timestamp.valueOf(dateTime));
         ResultSet resultSet = preparedStatement.executeQuery();
         Ticket ticket = null;
         if (resultSet.next()) {

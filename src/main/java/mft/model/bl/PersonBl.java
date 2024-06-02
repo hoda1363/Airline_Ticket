@@ -20,7 +20,6 @@ PersonBl implements CRUD<Person>{
     @Override
     public Person save(Person person) throws Exception {
         try (PersonDa personDa = new PersonDa()) {
-            if(personDa.)
             personDa.save(person);
             return person;
         }

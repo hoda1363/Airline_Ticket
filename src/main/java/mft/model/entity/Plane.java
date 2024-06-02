@@ -15,7 +15,7 @@ public class Plane {
     private int id;
     private String name;
     private Airline airline;
-    private  String flightNumber;
+    private int flightNumber;
     private String aircraftType;
     private String route;
     private int capacity;

@@ -103,6 +103,25 @@ public class FlightDa implements AutoCloseable, CRUD<Flight> {
                 return flight;
                 }
 
+    public Flight findByFlightNumber(int flight_number) throws Exception {
+        preparedStatement = connection.prepareStatement("select * from FLIGHT where FLIGHT_NUMBER=?");
+        preparedStatement.setInt(1, flight_number);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        Flight flight = null;
+        if (resultSet.next()) {
+            flight = Flight
+                    .builder()
+                    .id(resultSet.getInt("ID"))
+                    .name(resultSet.getString("NAME"))
+                    .flightNumber(resultSet.getInt("flight_number"))
+                    .companyName(resultSet.getString("company_name"))
+                    .startTime(resultSet.getTimestamp("Start_Time").toLocalDateTime())
+                    .endTime(resultSet.getTimestamp("END_Time").toLocalDateTime())
+                    .plane(Plane.builder().id(resultSet.getInt("plane_id")).build())
+                    .build();
+        }
+        return flight;
+    }
             @Override
 public void close() throws Exception {
     preparedStatement.close();

@@ -13,7 +13,7 @@ create table user_tbl
     id            number primary key,
     name          nvarchar2(30) unique ,
     family        nvarchar2(30),
-    enable number(1)
+    enable number(1));
 create sequence user_seq start with 1 increment by 1;
 
 
@@ -24,7 +24,7 @@ create table plane
     ID          number primary key ,
     name         nvarchar2(30),
     Airline      nvarchar2(20),
-    flightNumber nvarchar2(20),
+    flightNumber number(4),
     aircraftType nvarchar2(20),
     route        varchar2(50),
     capacity     number
@@ -38,7 +38,7 @@ create table flight
 (
     id           number primary key,
     name         nvarchar2(30),
-    flight_Number nvarchar2(6),
+    flight_Number number(4),
     company_Name  nvarchar2(30),
     start_Time    TIMESTAMP,
     end_Time      TIMESTAMP,

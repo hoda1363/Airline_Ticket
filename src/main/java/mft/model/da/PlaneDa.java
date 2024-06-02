@@ -31,7 +31,7 @@ public class PlaneDa implements AutoCloseable, CRUD<Plane> {
         preparedStatement.setInt(1, plane.getId());
         preparedStatement.setString(2, plane.getName());
         preparedStatement.setString(3, String.valueOf(plane.getAirline()));
-        preparedStatement.setString(4, plane.getFlightNumber());
+        preparedStatement.setInt(4, plane.getFlightNumber());//todo
         preparedStatement.setString(5, plane.getAircraftType());
         preparedStatement.setString(6, plane.getRoute());
         preparedStatement.setInt(7, plane.getCapacity());
@@ -46,7 +46,7 @@ public class PlaneDa implements AutoCloseable, CRUD<Plane> {
         preparedStatement.setInt(1, plane.getId());
         preparedStatement.setString(2, plane.getName());
         preparedStatement.setString(3, String.valueOf(plane.getAirline()));
-        preparedStatement.setString(4, plane.getFlightNumber());
+        preparedStatement.setInt(4, plane.getFlightNumber());
         preparedStatement.setString(5, plane.getAircraftType());
         preparedStatement.setString(6, plane.getRoute());
         preparedStatement.setInt(7, plane.getCapacity());
@@ -74,7 +74,7 @@ public class PlaneDa implements AutoCloseable, CRUD<Plane> {
                     .id(resultSet.getInt("id"))
                     .name(resultSet.getString("name"))
                     .airline(Airline.valueOf(resultSet.getString("airline")))
-                    .flightNumber(resultSet.getString("flightNumber"))
+                    .flightNumber(resultSet.getInt("flightNumber"))
                     .aircraftType(resultSet.getString("airCraftType"))
                     .route(resultSet.getString("route"))
                     .capacity(resultSet.getInt("capacity"))
@@ -97,7 +97,7 @@ public class PlaneDa implements AutoCloseable, CRUD<Plane> {
                     .id(resultSet.getInt("id"))
                     .name(resultSet.getString("name"))
                     .airline(Airline.valueOf(resultSet.getString("airline")))
-                    .flightNumber(resultSet.getString("flightNumber"))
+                    .flightNumber(resultSet.getInt("flightNumber"))
                     .aircraftType(resultSet.getString("airCraftType"))
                     .route(resultSet.getString("route"))
                     .capacity(resultSet.getInt("capacity"))
