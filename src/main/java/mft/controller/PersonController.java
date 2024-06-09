@@ -1,13 +1,10 @@
 package mft.controller;
 
-
-import jdk.nashorn.internal.objects.annotations.Getter;
 import mft.model.entity.Person;
-import org.omg.CORBA.PUBLIC_MEMBER;
 
-import javax.ws.rs.Path;
-import javax.xml.ws.Response;
-import java.awt.*;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 @Path("/person")
 public class PersonController {
@@ -16,15 +13,12 @@ public class PersonController {
     public Response getPerson() {
         Person person = Person
                 .builder()
-                .id()
-                .name()
-                .family()
-                .nationalid()
-                .birthdate();
-                return Response .Status (201).entity(person).build();
+                .id(1)
+                .name("")
+                .family("")
+                .nationalId("12345")
+                .birthDate(null)
+                .build();
+        return Response.status(201).entity(person).build();
     }
-
-@POST
-Public person save(
-
-    )
+}
