@@ -6,10 +6,9 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
+import java.util.regex.Pattern;
 
 @NoArgsConstructor
-@Getter
-@Setter
 @SuperBuilder(toBuilder = true)
 
 
@@ -22,11 +21,66 @@ public class Flight {
     private LocalDateTime endTime;
     private Plane plane;
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    @Override
-    public String toString() {
-        return new Gson().toJson(this);}}
+    public int getFlightNumber() {
+        return flightNumber;
+    }
+
+    public Flight setFlightNumber(int flightNumber) throws Exception {
+        if (!Pattern.matches("^[\\d]{4}$", flightNumber)) {
+            this flightNumber = flightNumber
+        } else {
+            throw new Exception("Invalid flight number");
+        }
+        return this;
+}
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public Plane getPlane() {
+        return plane;
+    }
+
+    public void setPlane(Plane plane) {
+        this.plane = plane;
+    }
+
+    public LocalDateTime getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
+    }
 
 
 
