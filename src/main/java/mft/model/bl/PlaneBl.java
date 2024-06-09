@@ -8,52 +8,52 @@ import mft.model.da.PlaneDa;
 import mft.model.entity.Person;
 import mft.model.entity.Plane;
 import mft.model.tools.CRUD;
+
 import java.util.Collections;
 import java.util.List;
 
 public class PlaneBl implements CRUD<Plane> {
 
 
+    @Getter
+    private static PlaneBl planeBl = new PlaneBl();
 
-        @Getter
-        private static PlaneBl planeBl = new PlaneBl();
+    private PlaneBl() {
+    }
 
-    private Plane() {
+    @Override
+    public Plane save(Plane plane) throws Exception {
+        try (PlaneDa planeBl = new PlaneDa()) {
+            planeBl.save(plane);
+            return plane;
         }
-
-        @Override
-        public Plane save(Plane plane) throws Exception {
-            try (PlaneDa planeBl = new PlaneDa()){
-                planeBl.save(plane);
-                return plane;
-            }
 
     }
 
     @Override
     public Plane edit(Plane plane) throws Exception {
         try (PlaneDa planeDa = new PlaneDa()) {
-                if (planeDa.findById(plane.getId()) != null) {
-                    planeDa.edit(plane);
-                    return plane;
-                } else {
-                    throw new NoPlaneFoundException();
-                }
+            if (planeDa.findById(plane.getId()) != null) {
+                planeDa.edit(plane);
+                return plane;
+            } else {
+                throw new NoPlaneFoundException();
             }
+        }
 
     }
 
     @Override
     public Plane remove(int id) throws Exception {
-            try (PlaneDa planeDa = new PlaneDa()) {
-                Plane plane = planeDa.findById(id);
-                if (plane != null) {
-                    planeDa.remove(id);
-                    return plane;
-                } else {
-                    throw new NoPlaneFoundException();
-                }
+        try (PlaneDa planeDa = new PlaneDa()) {
+            Plane plane = planeDa.findById(id);
+            if (plane != null) {
+                planeDa.remove(id);
+                return plane;
+            } else {
+                throw new NoPlaneFoundException();
             }
+        }
 
     }
 

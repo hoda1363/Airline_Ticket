@@ -1,6 +1,7 @@
 package mft.model.da;
 
 import mft.model.entity.Flight;
+import mft.model.entity.Person;
 import mft.model.entity.Ticket;
 import mft.model.entity.enums.Airline;
 import mft.model.tools.CRUD;
@@ -76,7 +77,7 @@ public class TicketDa implements AutoCloseable, CRUD<Ticket> {              //TO
                     .builder()
                     .id(resultSet.getInt("ID"))
                     .dateTime(resultSet.getTimestamp("dateTime").toLocalDateTime())
-                    .source(resultSet.getString("sorce"))
+                    .source(resultSet.getString("source"))
                     .destination(resultSet.getString("destination"))
                     .duration(resultSet.getTime("duration").toLocalTime())
                     .confirm(resultSet.getBoolean("confirm"))
@@ -92,8 +93,26 @@ public class TicketDa implements AutoCloseable, CRUD<Ticket> {              //TO
 
     @Override
     public Ticket findById(int id) throws Exception {
+        preparedStatement = connection.prepareStatement("SELECT * FROM JAVASE.TICKET WHERE ID=?");
+        preparedStatement.setInt(1, id);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        Ticket ticket = null;
+        if (resultSet.next()) {
+            ticket = ticket
+                    .builder()
+                    .id(resultSet.getInt("ID"))
+                    .dateTime(resultSet.getTimestamp("DateTime").toLocalDateTime())
+                    .source(resultSet.getString("source"))
+                    .destination(resultSet.getString("destination"))
+                    .duration(resultSet.getTime("duration").toLocalTime())
+                    .confirm(resultSet.getBoolean("confirm"))
+                    .flight(Flight.builder().id(resultSet.getInt("FLIGHT_ID")).build())
+                    .airline(Airline.valueOf(resultSet.getString("airline")))
+                    .build();
 
-        return null;
+        }
+        return ticket;
+
     }
 
     public Ticket findByAirline(Airline airline) throws Exception {
@@ -106,7 +125,7 @@ public class TicketDa implements AutoCloseable, CRUD<Ticket> {              //TO
                     .builder()
                     .id(resultSet.getInt("ID"))
                     .dateTime(resultSet.getTimestamp("dateTime").toLocalDateTime())
-                    .source(resultSet.getString("sorce"))
+                    .source(resultSet.getString("source"))
                     .destination(resultSet.getString("destination"))
                     .duration(resultSet.getTime("duration").toLocalTime())
                     .confirm(resultSet.getBoolean("confirm"))
@@ -126,7 +145,7 @@ public class TicketDa implements AutoCloseable, CRUD<Ticket> {              //TO
                     .builder()
                     .id(resultSet.getInt("ID"))
                     .dateTime(resultSet.getTimestamp("dateTime").toLocalDateTime())
-                    .source(resultSet.getString("sorce"))
+                    .source(resultSet.getString("source"))
                     .destination(resultSet.getString("destination"))
                     .duration(resultSet.getTime("duration").toLocalTime())
                     .confirm(resultSet.getBoolean("confirm"))
@@ -146,7 +165,7 @@ public class TicketDa implements AutoCloseable, CRUD<Ticket> {              //TO
                     .builder()
                     .id(resultSet.getInt("ID"))
                     .dateTime(resultSet.getTimestamp("dateTime").toLocalDateTime())
-                    .source(resultSet.getString("sorce"))
+                    .source(resultSet.getString("source"))
                     .destination(resultSet.getString("destination"))
                     .duration(resultSet.getTime("duration").toLocalTime())
                     .confirm(resultSet.getBoolean("confirm"))
@@ -166,7 +185,7 @@ public class TicketDa implements AutoCloseable, CRUD<Ticket> {              //TO
                     .builder()
                     .id(resultSet.getInt("ID"))
                     .dateTime(resultSet.getTimestamp("dateTime").toLocalDateTime())
-                    .source(resultSet.getString("sorce"))
+                    .source(resultSet.getString("source"))
                     .destination(resultSet.getString("destination"))
                     .duration(resultSet.getTime("duration").toLocalTime())
                     .confirm(resultSet.getBoolean("confirm"))
@@ -186,7 +205,7 @@ public class TicketDa implements AutoCloseable, CRUD<Ticket> {              //TO
                     .builder()
                     .id(resultSet.getInt("ID"))
                     .dateTime(resultSet.getTimestamp("dateTime").toLocalDateTime())
-                    .source(resultSet.getString("sorce"))
+                    .source(resultSet.getString("source"))
                     .destination(resultSet.getString("destination"))
                     .duration(resultSet.getTime("duration").toLocalTime())
                     .confirm(resultSet.getBoolean("confirm"))
