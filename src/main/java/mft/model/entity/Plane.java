@@ -1,15 +1,12 @@
 package mft.model.entity;
 
-import com.google.gson.Gson;
-import lombok.Getter;
+
+
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import mft.model.entity.enums.Airline;
 
 @NoArgsConstructor
-@Getter
-@Setter
 @SuperBuilder(toBuilder = true)
 public class Plane {
     private int id;
@@ -20,9 +17,59 @@ public class Plane {
     private String route;
     private int capacity;
 
+    public int getId() {
+        return id;
+    }
 
-    @Override
-    public String toString() {
-        return new Gson().toJson(this);
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Airline getAirline() {
+        return airline;
+    }
+
+    public void setAirline(Airline airline) {
+        this.airline = airline;
+    }
+
+    public int getFlightNumber() {
+        return flightNumber;
+    }
+
+    public void setFlightNumber(int flightNumber) {
+        this.flightNumber = flightNumber;
+    }
+
+    public String getAircraftType() {
+        return aircraftType;
+    }
+
+    public void setAircraftType(String aircraftType) {
+        this.aircraftType = aircraftType;
+    }
+
+    public String getRoute() {
+        return route;
+    }
+
+    public void setRoute(String route) {
+        this.route = route;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 }

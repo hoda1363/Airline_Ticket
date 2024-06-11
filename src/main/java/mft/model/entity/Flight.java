@@ -34,8 +34,8 @@ public class Flight {
     }
 
     public Flight setFlightNumber(int flightNumber) throws Exception {
-        if (!Pattern.matches("^[\\d]{4}$", flightNumber)) {
-            this flightNumber = flightNumber
+        if (Pattern.matches("^[\\d]{4}$",flightNumber)) {
+            this.flightNumber = flightNumber;
         } else {
             throw new Exception("Invalid flight number");
         }
