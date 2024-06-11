@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
@@ -61,18 +62,18 @@
       </GridPane>
       <TableView layoutX="324.0" layoutY="76.0" prefHeight="188.0" prefWidth="288.0">
          <columns>
-            <TableColumn prefWidth="37.0" text="ID" />
-            <TableColumn prefWidth="77.0" text="DateTime" />
-            <TableColumn prefWidth="84.0" text="Source" />
-            <TableColumn prefWidth="102.0" text="Destination" />
+            <TableColumn fx:id="idTbl" prefWidth="37.0" text="ID" />
+            <TableColumn fx:id="datetimeTbl" prefWidth="77.0" text="DateTime" />
+            <TableColumn fx:id="sourceTbl" prefWidth="84.0" text="Source" />
+            <TableColumn fx:id="destinationTbl" prefWidth="102.0" text="Destination" />
          </columns>
       </TableView>
       <TableView layoutX="324.0" layoutY="325.0" prefHeight="188.0" prefWidth="288.0">
          <columns>
-            <TableColumn prefWidth="75.0" text="Duration" />
-            <TableColumn prefWidth="75.0" text="Confirm" />
-            <TableColumn prefWidth="75.0" text="Flight" />
-            <TableColumn prefWidth="75.0" text="Airline" />
+            <TableColumn fx:id="durationTbl" prefWidth="75.0" text="Duration" />
+            <TableColumn fx:id="confirmTbl" prefWidth="75.0" text="Confirm" />
+            <TableColumn fx:id="flightTbl" prefWidth="75.0" text="Flight" />
+            <TableColumn fx:id="airlineTbl" prefWidth="75.0" text="Airline" />
          </columns>
       </TableView>
       <ToolBar layoutX="32.0" layoutY="450.0" prefHeight="58.0" prefWidth="275.0">
@@ -117,7 +118,6 @@
             <Label text="Find by flight" GridPane.rowIndex="7" />
             <TextField fx:id="findallTxt" GridPane.columnIndex="1" />
             <TextField fx:id="findbyidTxt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="findbydatetimeTxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="findbysourceTxt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <TextField fx:id="findbydestinationTxt" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <TextField fx:id="findbydurationTxt" GridPane.columnIndex="1" GridPane.rowIndex="6" />
@@ -135,6 +135,7 @@
             <Label layoutX="10.0" layoutY="312.0" text="Find all" />
             <Label text="Find by airline" GridPane.rowIndex="8" />
             <TextField fx:id="FindbyairlineCmb" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <DatePicker fx:id="findbydatetime" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </children>

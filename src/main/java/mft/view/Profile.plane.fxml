@@ -48,12 +48,12 @@
       </GridPane>
       <TableView layoutX="325.0" layoutY="58.0" prefHeight="357.0" prefWidth="427.0">
         <columns>
-            <TableColumn fx:id="findallTbl" prefWidth="55.0" text="id" />
-            <TableColumn fx:id="findbyidTbl" prefWidth="53.0" text="Name" />
-            <TableColumn fx:id="findbyidTbl1" prefWidth="73.0" text="Airline" />
-            <TableColumn fx:id="findbyidTbl2" prefWidth="88.0" text="Flightnumber" />
-            <TableColumn fx:id="findbyidTbl21" prefWidth="46.0" text="Rout" />
-            <TableColumn fx:id="findbyidTbl211" prefWidth="120.0" text="Capacity" />
+            <TableColumn fx:id="idTbl" prefWidth="55.0" text="id" />
+            <TableColumn fx:id="nameTbl" prefWidth="53.0" text="Name" />
+            <TableColumn fx:id="airlineTbl" prefWidth="73.0" text="Airline" />
+            <TableColumn fx:id="flightnumberTbl" prefWidth="88.0" text="Flightnumber" />
+            <TableColumn fx:id="routTbl" prefWidth="46.0" text="Rout" />
+            <TableColumn fx:id="capacityTbl" prefWidth="120.0" text="Capacity" />
         </columns>
       </TableView>
       <HBox layoutX="33.0" layoutY="479.0" prefHeight="39.0" prefWidth="283.0">
