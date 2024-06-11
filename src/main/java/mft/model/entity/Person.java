@@ -1,12 +1,9 @@
 package mft.model.entity;
 
-import com.google.gson.Gson;
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
-import lombok.Getter;
+
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import org.apache.commons.dbcp2.DelegatingResultSet;
+
 
 import java.time.LocalDate;
 import java.util.regex.Pattern;
