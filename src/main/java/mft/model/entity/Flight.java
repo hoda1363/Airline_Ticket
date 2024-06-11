@@ -1,8 +1,6 @@
 package mft.model.entity;
-import com.google.gson.Gson;
-import lombok.Getter;
+
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import java.time.LocalDateTime;
@@ -29,25 +27,27 @@ public class Flight {
         this.id = id;
     }
 
-    public int getFlightNumber() {
-        return flightNumber;
-    }
-
-    public Flight setFlightNumber(int flightNumber) throws Exception {
-        if (Pattern.matches("^[\\d]{4}$",flightNumber)) {
-            this.flightNumber = flightNumber;
-        } else {
-            throw new Exception("Invalid flight number");
-        }
-        return this;
-}
-
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String name)throws Exception {
+        if (Pattern.matches("^[a-zA-Z\\s]{2,30}$", name)) {
+            this.name = name;
+        } else {
+            throw new Exception("Invalid Name");
+        }
+        return this;
+    }
+
+}
+
+    public int getFlightNumber() {
+        return flightNumber;
+    }
+
+    public void setFlightNumber(int flightNumber) {
+        this.flightNumber = flightNumber;
     }
 
     public String getCompanyName() {
@@ -66,14 +66,6 @@ public class Flight {
         this.startTime = startTime;
     }
 
-    public Plane getPlane() {
-        return plane;
-    }
-
-    public void setPlane(Plane plane) {
-        this.plane = plane;
-    }
-
     public LocalDateTime getEndTime() {
         return endTime;
     }
@@ -82,10 +74,14 @@ public class Flight {
         this.endTime = endTime;
     }
 
+    public Plane getPlane() {
+        return plane;
+    }
+
+    public void setPlane(Plane plane) {
+        this.plane = plane;
+    }
+}
 
 
-
-
-
-
-
+   
