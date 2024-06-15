@@ -21,15 +21,16 @@ public class Plane {
         return id;
     }
 
-    public void setId(int id) {
+    public Plane setId(int id) {
         this.id = id;
+        return this;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public Plane setName(String name) {
         this.name = name;
     }
 

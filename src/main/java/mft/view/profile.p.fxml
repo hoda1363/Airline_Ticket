@@ -5,6 +5,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -14,7 +17,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="698.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:controller="mft.controller.PersonController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="698.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" >
    <children>
       <Pane layoutX="70.0" layoutY="46.0" prefHeight="200.0" prefWidth="200.0">
          <children>
@@ -22,7 +25,7 @@
                <children>
                   <Pane layoutY="9.0" prefHeight="208.0" prefWidth="200.0">
                      <children>
-                        <GridPane layoutX="-22.0" layoutY="-14.0" prefHeight="257.0" prefWidth="257.0">
+                        <GridPane layoutX="-22.0" layoutY="-14.0" prefHeight="284.0" prefWidth="257.0">
                           <columnConstraints>
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -40,11 +43,11 @@
                               <Label text="Familly" GridPane.rowIndex="2" />
                               <Label text="National_Cod" GridPane.rowIndex="3" />
                               <Label text="BirthDate" GridPane.rowIndex="4" />
-                              <TextField fx:id="IDTxt" GridPane.columnIndex="1" />
+                              <TextField fx:id="idTxt" GridPane.columnIndex="1" />
                               <TextField fx:id="nameTxt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <TextField fx:id="famillyTxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <TextField fx:id="nationalcodTxt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <DatePicker fx:id="birthDate" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <DatePicker fx:id="birthDatepeaker" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                            </children>
                         </GridPane>
                      </children>
@@ -53,12 +56,12 @@
             </Pane>
          </children>
       </Pane>
-      <TableView layoutX="337.0" layoutY="43.0" prefHeight="257.0" prefWidth="342.0">
+      <TableView fx:id="personTbl" layoutX="337.0" layoutY="54.0" prefHeight="257.0" prefWidth="342.0">
         <columns>
-            <TableColumn fx:id="idTbl" prefWidth="52.0" text="Id" />
-            <TableColumn fx:id="nameTbl" prefWidth="60.0" text="Name" />
-            <TableColumn fx:id="famillyTbl" prefWidth="83.0" text="Familly" />
-            <TableColumn fx:id="nationalcodTbl" prefWidth="131.0" text="  National_Cod" />
+            <TableColumn fx:id="idCol" prefWidth="52.0" text="Id" />
+            <TableColumn fx:id="nameCol" prefWidth="96.0" text="Name" />
+            <TableColumn fx:id="famillyCol" prefWidth="96.0" text="Familly" />
+            <TableColumn fx:id="nationalcodCol" prefWidth="96.0" text="  National_Cod" />
         </columns>
       </TableView>
       <Pane layoutX="349.0" layoutY="320.0" prefHeight="143.0" prefWidth="342.0">
@@ -79,32 +82,51 @@
                   <Label text="Find by id" GridPane.rowIndex="1" />
                   <Label text="Find by familly" GridPane.rowIndex="2" />
                   <Label text="Find by national_cod" GridPane.rowIndex="3" />
-                  <TextField fx:id="findallTxt" GridPane.columnIndex="1" />
-                  <TextField fx:id="findbyidTxt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField fx:id="findbyfamillyTxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField fx:id="findbynational_codTxt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="findAllTxt" GridPane.columnIndex="1" />
+                  <TextField fx:id="findByIdTxt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="findByFamillyTxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="findByNationalCodTxt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
          </children></Pane>
-      <HBox layoutX="45.0" layoutY="436.0" prefHeight="35.0" prefWidth="284.0">
+      <HBox layoutX="44.0" layoutY="437.0" prefHeight="35.0" prefWidth="267.0">
          <children>
-            <Button fx:id="saveBtn" mnemonicParsing="false" prefHeight="35.0" prefWidth="73.0" text="Save">
+            <Button fx:id="saveBtn" mnemonicParsing="false" prefHeight="10.0" prefWidth="80.0" text="Save">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </Button>
-            <Button fx:id="editBtn" mnemonicParsing="false" prefHeight="35.0" prefWidth="73.0" text="Edit">
+            <Button fx:id="editBtn" mnemonicParsing="false" prefHeight="10.0" prefWidth="80.0" text="Edit">
                <HBox.margin>
-                  <Insets left="40.0" />
+                  <Insets left="10.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="removeBtn" mnemonicParsing="false" prefHeight="35.0" prefWidth="72.0" text="Remove">
+            <Button fx:id="removeBtn" mnemonicParsing="false" prefHeight="10.0" prefWidth="80.0" text="Remove">
                <HBox.margin>
-                  <Insets left="40.0" />
+                  <Insets left="10.0" />
                </HBox.margin>
             </Button>
          </children>
       </HBox>
+      <MenuBar layoutX="4.0" layoutY="2.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem fx:id="closeMnu" mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Person">
+            <items>
+              <MenuItem fx:id="newMnu" mnemonicParsing="false" text="New Person" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
    </children>
    <cursor>
       <Cursor fx:constant="W_RESIZE" />

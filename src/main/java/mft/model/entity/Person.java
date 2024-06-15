@@ -58,7 +58,7 @@ public class Person {
     }
 
     public Person setNationalId(String nationalId) throws Exception {
-        if (Pattern.matches("^[\\d]{10}|[\\d]{3}-[\\d]{6}-[\\d]$", nationalId)) {
+        if (Pattern.matches("^[\\d]{10}|[\\d]{3}-[\\d]{6}-[\\d]$", nationalId)) { //TODO
             this.nationalId = nationalId;
         } else {
             throw new Exception("Invalid NationalId");
@@ -71,7 +71,7 @@ public class Person {
     }
 
     public Person setBirthDate(LocalDate birthDate) throws Exception {
-        if (Pattern.matches("^[\\D]{2}-[\\d]{2}-[\\d]{4}$", birthDate.toString())) {
+        if (Pattern.matches("^[\\D]{2}-[\\d]{2}-[\\d]{4}$", birthDate.toString())) {    //TODO
             this.birthDate = birthDate;
         } else {
             throw new Exception("Invalid Birth Date");

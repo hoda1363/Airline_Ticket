@@ -1,24 +1,32 @@
 package mft.controller;
 
-import mft.model.entity.Person;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import lombok.extern.log4j.Log4j;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-@Path("/person")
-public class PersonController {
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response getPerson() {
-        Person person = Person
-                .builder()
-                .id(1)
-                .name("")
-                .family("")
-                .nationalId("12345")
-                .birthDate(null)
-                .build();
-        return Response.status(201).entity(person).build();
+@Log4j
+
+public class PersonController implements Initializable {
+    @FXML
+    private TextField idTxt,nameTxt,famillyTxt,nationalcodTxt,findAllTxt,findByFamillyTxt,findByIdTxt;
+    @FXML
+    private DatePicker birthDatepeaker;
+    @FXML
+    private Button saveBtn,editBtn,removeBtn;
+    @FXML
+    private MenuItem closeMnu,newMnu;
+    @FXML
+    TableView personTbl;
+    @FXML
+    TableColumn idCol,nameCol,famillyCol,nationalcodCol;
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+
+
+
     }
 }
