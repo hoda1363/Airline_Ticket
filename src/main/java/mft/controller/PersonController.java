@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import lombok.extern.log4j.Log4j;
+import mft.model.bl.PersonBl;
 import mft.model.entity.Person;
 
 import java.net.URL;
@@ -30,7 +31,7 @@ public class PersonController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         log.info("Person windows start");
         try {
-            resetForm();
+            hashCode();
         } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR,
                     " Person loud Error\n" + e.getMessage());
@@ -38,7 +39,7 @@ public class PersonController implements Initializable {
         }
         newMnu.setOnAction(event -> {
             try {
-                resetForm();
+                hashCode();
             } catch (Exception e) {
                 Alert alert = new
                         Alert(Alert . AlertType.ERROR,"new person loud error\n" + e.getMessage());
@@ -56,5 +57,83 @@ log . info("App Closed");
 
 });
 saveBtn . setOnAction(event -> {
+    RadioButton role = (RadioButton)
+            roleToggle.getSelectedToggle();
+
+    try {
+        Person person = new Person();
+                .builder()
+                .name(nameTxt.getText())
+                .family(famillyTxt.getText())
+                .nationalid(nationalcodTxt.getText())
+                .birthdate(birthDatepeaker.getpeaker)//todo
+                .build();
+        PersonBl.getPersonBl().save(person);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Person Save\n" + person);
+        alert.show();
+        hashCode();
+        log.info("Person Save " + person);
+    } catch (Exception e) {
+        Alert alert = new Alert(Alert.AlertType.ERROR, "Person Save Error\n" + e.getMessage());
+        alert.show();
+        log.error("Person Save Error" + e.getMessage());
+    }
+});
+editBtn . setOnAction(event -> {
+    RadioButton RadioButton;
+    RadioButton role = (RadioButton)
+    roleToggle.getSelectedToggle();
+    try{
+        Person person = new Person();
+         .builder()
+                .name(nameTxt.getText())
+                .family(famillyTxt.getText())
+                .nationalid(nationalcodTxt.getText())
+                .birthdate(birthDatepeaker.getpeaker)//todo
+                .build();
+        PersonBl.getPersonBl().save(person);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Person Updated\n" + person);
+        alert.show();
+        hashCode();
+        log.info("Person Updated" + person);
+    } catch (Exception e) {
+        Alert alert = new Alert(Alert.AlertType.ERROR, "Person Edit Error\n" + e.getMessage());
+        alert.show();
+        log.error("Person Edit Error" + e.getMessage());
+    }
+});
+removeBtn.setOnAction(event -> {
+    try {
+        PersonBl.getPersonBl().remove(Integer.parseInt(idTxt.getText()));
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "Person Removed\n" + idTxt.getText());
+        alert.show();
+        log.info("person Remove" + idTxt.getText());
+        resetForm();
+    } catch (Exception e) {
+        Alert alert = new Alert(Alert.AlertType.ERROR, "person Remove Error\n" + e.getMessage());
+        alert.show();
+        log.error("Person Remove Error" + e.getMessage());
+    }
+});
+findByIdTxt.setOnKeyReleased(event -> {
+    try {
+        showDataOnTable(PersonBl.getPersonBl().findById(Integer.parseInt(findByIdTxt.getText())));
+        log.info("Find By Person Id Succeed " + Integer.parseInt((findByIdTxt.getText())));
+    } catch (Exception e) {
+        Alert alert = new Alert(Alert.AlertType.ERROR, "search Person id Error\n" + e.getMessage());
+        alert.show();
+        log.error("Find By Prson Id Error" + e.getMessage());
+    }
+});
+findByFamillyTxt.setOnKeyReleased(event ->{
+try{
+    showDataOnTble(personBl.getPersonBL().findByFamiily(findByFamillyTxt,getText()));
+log.info("Find Familly"+findByFamillyTxt.getText());}
+catch (Exception e) {
+    Alert alert = new Alert(Alert.AlertType.ERROR."Search Familly Error\n" + e.getMessage());
+    alert.show();
+    log.error("Find By Familly Error " + e.getMessage());
 }
-    })
+});
+
+
