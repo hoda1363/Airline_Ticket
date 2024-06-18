@@ -47,7 +47,7 @@
                               <TextField fx:id="nameTxt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <TextField fx:id="famillyTxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <TextField fx:id="nationalcodTxt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                              <DatePicker fx:id="birthDatepeaker" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <DatePicker fx:id="birthDate" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                            </children>
                         </GridPane>
                      </children>
@@ -108,7 +108,7 @@
             </Button>
          </children>
       </HBox>
-      <MenuBar layoutX="4.0" layoutY="2.0">
+      <MenuBar fx:id="fle" layoutX="14.0" layoutY="2.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
