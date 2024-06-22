@@ -17,7 +17,7 @@ public class PersonController implements Initializable {
     @FXML
     private TextField idTxt, nameTxt, famillyTxt, nationalcodTxt, findAllTxt, findByFamillyTxt, findByIdTxt;
     @FXML
-    private DatePicker birthDatepeaker;
+    private DatePicker birthDate;
     @FXML
     private Button saveBtn, editBtn, removeBtn;
     @FXML
@@ -33,23 +33,20 @@ public class PersonController implements Initializable {
         try {
             hashCode();
         } catch (Exception e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR,
-                    " Person loud Error\n" + e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.ERROR, " Person loud Error\n" + e.getMessage());
             alert.show();
         }
         newMnu.setOnAction(event -> {
             try {
                 hashCode();
             } catch (Exception e) {
-                Alert alert = new
-                        Alert(Alert.AlertType.ERROR, "new person loud error\n" + e.getMessage());
+                Alert alert = new Alert(Alert.AlertType.ERROR, "new person loud error\n" + e.getMessage());
                 alert.show();
 
             }
         });
         closeMnu.setOnAction(event -> {
-            Alert alert = new
-                    Alert(Alert.AlertType.CONFIRMATION, "Are you shure ?");
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you shure ?");
             if (alert.showAndWait().get().equals(ButtonType.OK)) {
                 Platform.exit();
             }
@@ -57,12 +54,11 @@ public class PersonController implements Initializable {
 
         });
         saveBtn.setOnAction(event -> {
-            RadioButton role = (RadioButton)
-                    roleToggle.getSelectedToggle();
+
 
             try {
                 Person person = new Person();
-                .builder()
+                        .builder()
                         .name(nameTxt.getText())
                         .family(famillyTxt.getText())
                         .nationalid(nationalcodTxt.getText())
@@ -80,12 +76,10 @@ public class PersonController implements Initializable {
             }
         });
         editBtn.setOnAction(event -> {
-            RadioButton RadioButton;
-            RadioButton role = (RadioButton)
-                    roleToggle.getSelectedToggle();
+
             try {
                 Person person = new Person();
-         .builder()
+                        .builder()
                         .name(nameTxt.getText())
                         .family(famillyTxt.getText())
                         .nationalid(nationalcodTxt.getText())
